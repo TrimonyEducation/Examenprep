@@ -25,7 +25,7 @@ export default function Guest({ children }: PropsWithChildren) {
                 Prijzen
             </Link>
             <Link
-                href="/"
+                href="/faq"
                 className="rounded-md  py-2 text-sm font-medium text-gray-600 hover:text-gray-900"
             >
                 FAQ
