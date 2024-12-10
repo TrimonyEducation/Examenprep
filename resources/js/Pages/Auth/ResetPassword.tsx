@@ -1,10 +1,12 @@
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, useForm } from '@inertiajs/react';
-import { FormEventHandler } from 'react';
+import InputError from "@/Components/InputError";
+import InputLabel from "@/Components/InputLabel";
+import { DisplayMD, TextSM } from "@/Components/typography/Typography";
+import { Button } from "@/Components/ui/button";
+import { Input } from "@/Components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import GuestLayout from "@/Layouts/GuestLayout";
+import { Head, useForm } from "@inertiajs/react";
+import { FormEventHandler } from "react";
 
 export default function ResetPassword({
     token,
@@ -16,51 +18,84 @@ export default function ResetPassword({
     const { data, setData, post, processing, errors, reset } = useForm({
         token: token,
         email: email,
-        password: '',
-        password_confirmation: '',
+        password: "",
+        password_confirmation: "",
     });
+
+    const { toast } = useToast();
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        post(route('password.store'), {
-            onFinish: () => reset('password', 'password_confirmation'),
-        });
+        try {
+            post(route("password.store"), {
+                onFinish: () => reset("password", "password_confirmation"),
+                onSuccess: () => {
+                    toast({
+                        description: "Wachtwoord gereset!",
+                        title: "success",
+                    });
+                },
+                onError: (errors) => {
+                    console.error(errors);
+                    toast({
+                        description: "Er is iets misgegaan.",
+                        title: "Oeps!",
+                        variant: "destructive",
+                    });
+                }
+            });
+        } catch (error) {
+            console.error(error);
+            toast({
+                description: "Er is iets misgegaan.",
+                title: "Oeps!",
+                variant: "destructive",
+            });
+        }
     };
 
     return (
         <GuestLayout>
-            <Head title="Reset Password" />
-
-            <form onSubmit={submit}>
+            <Head title="Wachtwoord resetten" />
+            <span className="text-left block">
+                <DisplayMD weight="bold">Reset wachtwoord</DisplayMD>
+            </span>
+            <span className="mb-4 text-left block">
+                <TextSM>
+                    Vul je email en nieuw wachtwoord in om je wachtwoord te
+                    resetten.
+                </TextSM>
+            </span>
+            <form onSubmit={submit} className="w-full px-4 md:w-1/3">
                 <div>
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="email" value="E-mailadres" />
 
-                    <TextInput
+                    <Input
                         id="email"
                         type="email"
                         name="email"
                         value={data.email}
+                        placeholder="uw@email.nl"
                         className="mt-1 block w-full"
                         autoComplete="username"
-                        onChange={(e) => setData('email', e.target.value)}
+                        onChange={(e) => setData("email", e.target.value)}
                     />
 
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel htmlFor="password" value="Wachtwoord" />
 
-                    <TextInput
+                    <Input
                         id="password"
                         type="password"
                         name="password"
                         value={data.password}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
-                        isFocused={true}
-                        onChange={(e) => setData('password', e.target.value)}
+                        onChange={(e) => setData("password", e.target.value)}
                     />
 
                     <InputError message={errors.password} className="mt-2" />
@@ -69,17 +104,17 @@ export default function ResetPassword({
                 <div className="mt-4">
                     <InputLabel
                         htmlFor="password_confirmation"
-                        value="Confirm Password"
+                        value="Bevestig Wachtwoord"
                     />
 
-                    <TextInput
+                    <Input
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
                         onChange={(e) =>
-                            setData('password_confirmation', e.target.value)
+                            setData("password_confirmation", e.target.value)
                         }
                     />
 
@@ -89,10 +124,10 @@ export default function ResetPassword({
                     />
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Reset Password
-                    </PrimaryButton>
+                <div className="mt-4 w-full flex items-center justify-end">
+                    <Button className="w-full" disabled={processing}>
+                        Wachtwoord resetten
+                    </Button>
                 </div>
             </form>
         </GuestLayout>

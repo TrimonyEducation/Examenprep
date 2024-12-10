@@ -3,9 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 Route::get('/', function () {
+     if (Auth::check()) {
+        return redirect()->route('dashboard');
+    }
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -15,8 +20,11 @@ Route::get('/', function () {
 });
 
 Route::get('/faq', function () {
+      if (Auth::check()) {
+        return redirect()->route('dashboard');
+    }
     return Inertia::render('Faq');
-});
+})->name('faq');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

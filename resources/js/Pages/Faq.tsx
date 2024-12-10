@@ -8,24 +8,27 @@ import {
 } from "@/Components/ui/accordion";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head } from "@inertiajs/react";
+import { DisplayLG, TextLG } from "@/Components/typography/Typography";
 
 export default function Faq() {
     return (
         <GuestLayout>
             <Head title={`${BRAND_NAME} | Veelgestelde vragen`} />
-            <div className="container mx-auto px-4 py-12">
-                <h1 className="mb-2 text-center text-5xl font-bold">
-                    Veelgestelde vragen over {BRAND_NAME}
-                </h1>
-                <p className="mb-8 text-center text-gray-400">
+            <div className="container mx-auto px-4 ">
+                <div className="mb-2 text-center ">
+                    <DisplayLG weight="bold">
+                        Veelgestelde vragen over {BRAND_NAME}
+                    </DisplayLG>
+                </div>
+                <p className="mb-8 text-center text-muted-foreground">
                     Alles wat je moet weten over {BRAND_NAME}
                 </p>
                 <Accordion type="single" className="mx-auto w-full max-w-3xl">
                     <AccordionItem value="item-1">
                         <AccordionTrigger>
-                            Wat is {BRAND_NAME}?
+                            <TextLG>Wat is {BRAND_NAME}?</TextLG>
                         </AccordionTrigger>
-                        <AccordionContent className="text-gray-600 dark:text-gray-400">
+                        <AccordionContent className="text-muted-foreground">
                             {BRAND_NAME} is een e-learning platform voor het
                             leren voor de VO eindexamens dat gebruik maakt van
                             videos, "Spaced repetition" technieken &
@@ -36,9 +39,12 @@ export default function Faq() {
                     </AccordionItem>
                     <AccordionItem value="item-2">
                         <AccordionTrigger>
-                            Kan ik {BRAND_NAME} gebruiken voor het staatsexamen?
+                            <TextLG>
+                                Kan ik {BRAND_NAME} gebruiken voor het
+                                staatsexamen?
+                            </TextLG>
                         </AccordionTrigger>
-                        <AccordionContent className="text-gray-600 dark:text-gray-400">
+                        <AccordionContent className="text-muted-foreground">
                             {BRAND_NAME} is geschikt voor het voorbereiden op
                             het
                             <strong className="text-black underline dark:text-white">
@@ -59,9 +65,9 @@ export default function Faq() {
                     </AccordionItem>
                     <AccordionItem value="item-3">
                         <AccordionTrigger>
-                            Wat is "Spaced repetition"?
+                            <TextLG>Wat is "Spaced repetition"?</TextLG>
                         </AccordionTrigger>
-                        <AccordionContent className="text-gray-600 dark:text-gray-400">
+                        <AccordionContent className="text-muted-foreground">
                             “Spaced repetition,” of herhaald leren, is een
                             leertechniek waarbij de leerstof op geplande
                             intervallen wordt herhaald. Dit helpt bij het
@@ -77,9 +83,9 @@ export default function Faq() {
                     </AccordionItem>
                     <AccordionItem value="item-4">
                         <AccordionTrigger>
-                            Welke vakken heeft {BRAND_NAME}?
+                            <TextLG>Welke vakken heeft {BRAND_NAME}?</TextLG>
                         </AccordionTrigger>
-                        <AccordionContent className="text-gray-600 dark:text-gray-400">
+                        <AccordionContent className="text-muted-foreground">
                             {BRAND_NAME} biedt een breed scala aan vakken. De
                             vakken die wij aanbieden zijn:
                             <ul className="mt-2 list-inside list-disc">
@@ -100,9 +106,9 @@ export default function Faq() {
                     </AccordionItem>
                     <AccordionItem value="item-5">
                         <AccordionTrigger>
-                            Voor welk niveau is {BRAND_NAME}?
+                            <TextLG>Voor welk niveau is {BRAND_NAME}?</TextLG>
                         </AccordionTrigger>
-                        <AccordionContent className="text-gray-600 dark:text-gray-400">
+                        <AccordionContent className="text-muted-foreground">
                             {BRAND_NAME} is beschikbaar voor de volgende niveaus
                             VMBO-GL/TL, HAVO en VWO.
                         </AccordionContent>

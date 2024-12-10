@@ -1,9 +1,8 @@
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { ArrowLeft } from "lucide-react";
@@ -14,22 +13,48 @@ export default function ForgotPassword({ status }: { status?: string }) {
         email: "",
     });
 
+    const { toast } = useToast();
+
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-
-        post(route("password.email"));
+        try {
+            post(route("password.email"), {
+                onFinish: () => setData("email", ""),
+                onSuccess: () => {
+                    toast({
+                        description: "Een e-mail is verstuurd.",
+                        title: "Succes!",
+                    });
+                },
+                onError: (errors) => {
+                    console.error(errors);
+                    toast({
+                        description: "Er is iets misgegaan.",
+                        title: "Oeps!",
+                        variant: "destructive",
+                    });
+                },
+            });
+        } catch (error) {
+            console.error(error);
+            toast({
+                description: "Er is iets misgegaan.",
+                title: "Oeps!",
+                variant: "destructive",
+            });
+        }
     };
 
     return (
-        <>
-            <Head title="Forgot Password" />
-            <GuestLayout></GuestLayout>
+        <GuestLayout>
+            <Head title="Wachtwoord vergeten" />
+
             <div className="w-full  flex h-screen justify-center mt-14">
                 <div className="max-w-md mt-10 items-center justify-center">
                     <h2 className="text-4xl font-bold mb-4">
                         Wachtwoord vergeten?
                     </h2>
-                    <div className="mb-4 text-sm text-gray-600">
+                    <div className="mb-4 text-sm text-muted-foreground">
                         Je wachtwoord vergeten? Geen probleem. Laat ons je
                         e-mailadres weten en we sturen je een e-mail met een
                         link om je wachtwoord opnieuw in te stellen. Waarmee je
@@ -85,6 +110,6 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     </div>
                 </div>
             </div>
-        </>
+        </GuestLayout>
     );
 }

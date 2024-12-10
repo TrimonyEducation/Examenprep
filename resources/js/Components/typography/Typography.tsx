@@ -11,9 +11,7 @@ export const Display2XL: FC<DisplayProps> = ({
 }) => {
     return (
         <h1
-            className={`text-7xl ${
-                space_grotesk.className
-            } leading-[5.625rem] tracking-[-2%] ${
+            className={`text-7xl  leading-[5.625rem] tracking-[-2%] ${
                 weight ? `font-${weight}` : ""
             }`}
             {...props}
@@ -26,9 +24,7 @@ export const Display2XL: FC<DisplayProps> = ({
 export const DisplayXL: FC<DisplayProps> = ({ children, weight, ...props }) => {
     return (
         <h2
-            className={`text-6xl ${
-                space_grotesk.className
-            } leading-[4.5rem] tracking-[-2%] ${
+            className={`text-6xl  leading-[4.5rem] tracking-[-2%] ${
                 weight ? `font-${weight}` : ""
             }`}
             {...props}
@@ -41,9 +37,7 @@ export const DisplayXL: FC<DisplayProps> = ({ children, weight, ...props }) => {
 export const DisplayLG: FC<DisplayProps> = ({ children, weight, ...props }) => {
     return (
         <h3
-            className={`text-5xl ${
-                space_grotesk.className
-            } leading-[3.75rem] tracking-[-2%] ${
+            className={`text-5xl  leading-[3.75rem] tracking-[-2%] ${
                 weight ? `font-${weight}` : ""
             }`}
             {...props}
@@ -141,7 +135,7 @@ export const TextLG: FC<DisplayParagraphProps> = ({
         <p
             className={`text-lg leading-[1.75rem] ${
                 weight ? `font-${weight}` : ""
-            } ${muted ? "text-muted-foreground" : ""}`}
+            } ${muted ? "-foreground" : ""}`}
             {...props}
         >
             {children}
@@ -202,5 +196,3 @@ export const TextXS: FC<DisplayParagraphProps> = ({
         </p>
     );
 };
-
-

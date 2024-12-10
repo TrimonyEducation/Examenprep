@@ -34,11 +34,7 @@ class NewPasswordController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        $request->validate($this->rules(), $this->validationErrorMessages());
 
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
@@ -65,5 +61,24 @@ class NewPasswordController extends Controller
         throw ValidationException::withMessages([
             'email' => [trans($status)],
         ]);
+    }
+
+    protected function rules(): array
+    {
+        return [
+            'token' => 'required',
+            'email' => ['required', 'email'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ];
+    }
+
+    protected function validationErrorMessages(): array
+    {
+        return [
+            'email.required' => 'E-mailadres is verplicht.',
+            'email.email' => 'Voer een geldig e-mailadres in.',
+            'password.required' => 'Wachtwoord is verplicht.',
+            'password.confirmed' => 'Wachtwoorden komen niet overeen.',
+        ];
     }
 }

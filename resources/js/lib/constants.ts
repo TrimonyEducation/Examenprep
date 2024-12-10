@@ -1,1 +1,1 @@
-export const BRAND_NAME = "Trimony";
+export const BRAND_NAME = "Examenprep";
