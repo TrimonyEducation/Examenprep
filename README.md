@@ -1,5 +1,4 @@
 
-Hier is een voorbeeld van een README.md-bestand voor een GitHub-repository van een eindexamenvoorbereidingswebsite met spaced repetition en aangepaste leerpaden:
 
 markdown
 Code kopiëren
