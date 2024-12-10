@@ -1,7 +1,3 @@
-
-
-markdown
-Code kopiëren
 # ExamenPrep 🎓
 
 Welkom bij **ExamenPrep**, jouw ultieme tool voor het voorbereiden op eindexamens! Onze website combineert **spaced repetition** met **aangepaste leerpaden** om jou te helpen efficiënter en slimmer te leren.
