@@ -47,7 +47,7 @@ export default function PricingPage({ auth }: PageProps) {
 
     return (
         <GuestLayout>
-            <div className="container mx-auto   flex flex-grow flex-col items-center justify-center p-4 ">
+            <div className="container mx-auto flex flex-grow flex-col items-center justify-center p-4 ">
                 <span className="mb-9">
                     <DisplayLG weight="bold">Kies je abonnement</DisplayLG>
                 </span>
