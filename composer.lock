@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d1606ddd7f9d452ba99df62f196fa9c",
+    "content-hash": "2fc0b72d25856dca4b309045f2ef4100",
     "packages": [
         {
             "name": "brick/math",
@@ -1132,16 +1132,16 @@
         },
         {
             "name": "laravel/cashier",
-            "version": "v15.5.0",
+            "version": "v15.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-stripe.git",
-                "reference": "6837dfa4abb82e90f81e99863aeb85b2f6f86dad"
+                "reference": "e7e96008b4df2a8dafefba512b3c54fe68c89770"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/6837dfa4abb82e90f81e99863aeb85b2f6f86dad",
-                "reference": "6837dfa4abb82e90f81e99863aeb85b2f6f86dad",
+                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/e7e96008b4df2a8dafefba512b3c54fe68c89770",
+                "reference": "e7e96008b4df2a8dafefba512b3c54fe68c89770",
                 "shasum": ""
             },
             "require": {
@@ -1177,13 +1177,13 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "15.x-dev"
-                },
                 "laravel": {
                     "providers": [
                         "Laravel\\Cashier\\CashierServiceProvider"
                     ]
+                },
+                "branch-alias": {
+                    "dev-master": "15.x-dev"
                 }
             },
             "autoload": {
@@ -1216,7 +1216,7 @@
                 "issues": "https://github.com/laravel/cashier/issues",
                 "source": "https://github.com/laravel/cashier"
             },
-            "time": "2024-11-12T16:17:04+00:00"
+            "time": "2024-12-10T16:15:29+00:00"
         },
         {
             "name": "laravel/framework",
