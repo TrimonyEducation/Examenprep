@@ -22,29 +22,27 @@ export default function Guest({ children }: PropsWithChildren) {
             <Link
                 href="/pricing"
                 className="rounded-md  py-2 text-sm font-medium text-muted-foreground hover:text-gray-900"
+                prefetch={true}
             >
                 Prijzen
             </Link>
             <Link
                 href="/faq"
                 className="rounded-md py-2 text-sm font-medium text-muted-foreground hover:text-gray-900"
-                preload="true"
+                prefetch
             >
                 FAQ
             </Link>
-            <Button variant="outline" asChild>
-                <Link href="/login" preload="true">
-                    Inloggen
-                </Link>
-            </Button>
-            <Button asChild>
-                <Link href="/register">Aanmelden</Link>
-            </Button>
+            <Link href="/login" prefetch>
+                <Button variant="outline">Inloggen</Button>
+            </Link>
+            <Link href="/register" prefetch>
+                <Button>Aanmelden</Button>
+            </Link>
         </>
     );
     return (
         <div className=" h-full relative flex flex-col ">
-
             <nav className="bg-white shadow-sm">
                 <div className="mx-auto px-4  ">
                     <div className="flex h-16 items-center justify-between">
@@ -52,6 +50,7 @@ export default function Guest({ children }: PropsWithChildren) {
                             <Link
                                 href="/"
                                 className="flex flex-shrink-0 items-center"
+                                prefetch
                             >
                                 <span className="text-xl font-bold text-gray-800">
                                     {BRAND_NAME}
@@ -112,7 +111,7 @@ export default function Guest({ children }: PropsWithChildren) {
                     </TextSM>
                 </div>
             </footer>
-              <Toaster />
+            <Toaster />
         </div>
     );
 }

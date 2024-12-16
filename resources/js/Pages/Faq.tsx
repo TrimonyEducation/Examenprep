@@ -109,7 +109,7 @@ export default function Faq() {
                             <TextLG>Voor welk niveau is {BRAND_NAME}?</TextLG>
                         </AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            {BRAND_NAME} is beschikbaar voor de volgende niveaus
+                            {BRAND_NAME} is beschikbaar voor de volgende niveau's:
                             VMBO-GL/TL, HAVO en VWO.
                         </AccordionContent>
                     </AccordionItem>

@@ -75,6 +75,12 @@ export default function Register() {
         e.preventDefault();
 
         const validation = registerValidation.safeParse(data);
+        if(data.password !== data.password_confirmation) {
+            setError("password_confirmation", "Wachtwoorden komen niet overeen");
+            setError("password", "Wachtwoorden komen niet overeen");
+            reset("password", "password_confirmation");
+            return;
+        }
         if (!validation.success) {
             validation.error.errors.forEach((error) => {
                 setError(error.path[0] as "email" | "password" | "password_confirmation", error.message);
