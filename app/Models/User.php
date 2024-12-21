@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function streaks()
+    {
+        return $this->hasMany(Streak::class);
+    }
 }

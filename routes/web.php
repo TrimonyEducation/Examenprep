@@ -32,12 +32,9 @@ Route::get('/pricing', function () {
 })->name('pricing');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard/Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/pricing', function () {
-    return Inertia::render('Pricing');
-})->name('pricing');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
